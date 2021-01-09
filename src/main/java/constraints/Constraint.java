@@ -1,4 +1,4 @@
-package Constraints;
+package constraints;
 
 public class Constraint {
     public String lastResult;

@@ -1,6 +1,6 @@
 package queries;
 
-import Constraints.Constraint;
+import constraints.Constraint;
 
 import java.util.List;
 

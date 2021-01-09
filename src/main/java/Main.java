@@ -1,4 +1,4 @@
-import Constraints.EqualConstraint;
+import constraints.EqualConstraint;
 import persistence.Student;
 import queries.BaseQuery;
 import queries.SQLConnector;

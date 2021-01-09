@@ -1,4 +1,4 @@
-package Constraints;
+package constraints;
 
 public class EqualConstraint extends Constraint {
 

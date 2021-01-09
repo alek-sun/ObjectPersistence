@@ -1,9 +1,9 @@
 package translation;
 
+import annotations.Column;
 import annotations.NotNull;
 import annotations.PrimaryKey;
 
-import java.sql.ResultSet;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -15,6 +15,7 @@ public class JavaToSQLTranslator {
         typeTable.put(Integer.class, "INTEGER");
         constrainsTable.put(PrimaryKey.class, "PRIMARY KEY");
         constrainsTable.put(NotNull.class, "NOT NULL");
+        constrainsTable.put(Column.class, "");
     }
 
     public static String typeToSQL(Class<?> javaType) {

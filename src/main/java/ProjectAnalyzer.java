@@ -1,5 +1,6 @@
 import org.reflections.Reflections;
 import org.reflections.scanners.SubTypesScanner;
+import queries.SQLConnector;
 
 import java.util.List;
 import java.util.Objects;

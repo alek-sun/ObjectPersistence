@@ -1,3 +1,5 @@
+package queries;
+
 import translation.SQLToJavaTranslator;
 
 import java.lang.reflect.InvocationTargetException;
@@ -21,35 +23,7 @@ public class SQLConnector {
         } catch (SQLException e) {
             System.err.println(e.getMessage());
         }
-/*        finally
-        {
-            try
-            {
-                if (connection != null)
-                    connection.close();
-            }
-            catch(SQLException e)
-            {
-                // connection close failed.
-                System.err.println(e.getMessage());
-            }
-        }*/
     }
-/*
-    void executeQuery(String tableName) {
-        try {
-            Statement statement = connection.createStatement();
-            statement.setQueryTimeout(30);
-            ResultSet rs = statement.executeQuery("select * from " + tableName);
-            while (rs.next()) {
-                System.out.println("name = " + rs.getString("name"));
-                System.out.println("id = " + rs.getInt("id"));
-                System.out.println("age = " + rs.getInt("age"));
-            }
-        } catch (SQLException e) {
-            System.err.println(e.getMessage());
-        }
-    }*/
 
     public List<Object> execute(String script) {
         try {

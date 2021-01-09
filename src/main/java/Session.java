@@ -1,8 +1,6 @@
 public class Session {
-
-    String url = "toDB";
-
-    // insert to table
+    SQLConnector connection;
+    // inserts to table
     // look for class in builtTables
     // if exists then do
     void save(Class<?> c, Object o) {

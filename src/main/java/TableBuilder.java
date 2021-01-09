@@ -10,7 +10,6 @@ class TableBuilder<T> {
     Class<T> javaTableType;
     String tableName;
     List<Field> declaredFields;
-    List<String> builtTables;
 
     public TableBuilder(Class<T> type) {
         //todo check if type is annotated with Annotations.Table

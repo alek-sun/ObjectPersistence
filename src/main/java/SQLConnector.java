@@ -38,7 +38,7 @@ public class SQLConnector {
             }
         }*/
     }
-
+/*
     void executeQuery(String tableName) {
         try {
             Statement statement = connection.createStatement();
@@ -52,36 +52,15 @@ public class SQLConnector {
         } catch (SQLException e) {
             System.err.println(e.getMessage());
         }
-    }
+    }*/
 
-    public void insert(Object object) {
-        Class<?> c = object.getClass();
-        String tableName = c.getSimpleName();
-        StringBuilder script = new StringBuilder("INSERT INTO ");
-        script.append(tableName).append(" VALUES (");
+    public List<Object> execute(String script) {
         try {
-            Arrays.stream(c.getDeclaredFields()).forEach(f -> {
-                try {
-                    boolean isString = f.getType().equals(String.class);
-                    if (isString) {
-                        script.append("'");
-                    }
-                    script.append(f.get(object));
-                    if (isString) {
-                        script.append("'");
-                    }
-                    script.append(", ");
-                } catch (IllegalAccessException e) {
-                    e.printStackTrace();
-                }
-            });
-            script.delete(script.length() - 2, script.length() - 1);
-            script.append(");");
-            System.out.println(script.toString());
-            statement.executeUpdate(script.toString());
+            statement.executeUpdate(script);
         } catch (SQLException e) {
             System.err.println(e.getMessage());
         }
+        return new ArrayList<>();
     }
 
     void deleteTable(Class<?> c) {
@@ -92,10 +71,27 @@ public class SQLConnector {
         }
     }
 
-    List<Object> getAllFromTable(Class<?> c) {
+    List<Object> executeQuery(Class<?> c, String script) {
+        try {
+            ResultSet rs = statement.executeQuery(script);
+            return instantiateResults(c, rs);
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+        }
+        return new ArrayList<>();
+    }
+
+    void delete(Class<?> c) {
+        try {
+            statement.executeUpdate("DELETE FROM " + c.getSimpleName() + " WHERE id = 67");
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+        }
+    }
+
+    private List<Object> instantiateResults(Class<?> c, ResultSet rs) {
         List<Object> result = new ArrayList<>();
         try {
-            ResultSet rs = statement.executeQuery("select * from " + c.getSimpleName());
             ResultSetMetaData rsmd = rs.getMetaData();
             int propertiesCount = rsmd.getColumnCount();
             Class<?>[] types = new Class[propertiesCount];
@@ -117,5 +113,4 @@ public class SQLConnector {
         }
         return result;
     }
-    //select(Student.class).where(or(new LessThanConstraint(), new EqualConstraint())
 }

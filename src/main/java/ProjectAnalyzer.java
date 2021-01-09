@@ -1,8 +1,6 @@
 import org.reflections.Reflections;
 import org.reflections.scanners.SubTypesScanner;
 
-import java.sql.Connection;
-import java.sql.SQLException;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -37,8 +35,6 @@ public class ProjectAnalyzer {
 
     private void buildTableInDB(Class<?> cls) {
         connector.createTableByScript(new TableBuilder<>(cls).buildCreateTableScript());
-
-
     }
 
 }

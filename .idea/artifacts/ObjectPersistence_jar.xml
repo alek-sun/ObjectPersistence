@@ -1,0 +1,11 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="ObjectPersistence:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/ObjectPersistence_jar</output-path>
+    <root id="archive" name="ObjectPersistence.jar">
+      <element id="module-output" name="ObjectPersistence" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/xerial/sqlite-jdbc/3.20.1/sqlite-jdbc-3.20.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/javassist/javassist/3.26.0-GA/javassist-3.26.0-GA.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/reflections/reflections/0.9.12/reflections-0.9.12.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

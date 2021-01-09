@@ -13,10 +13,8 @@ public class ProjectAnalyzer {
         this.packageName = packageName;
         this.connector = connector;
     }
-    // explicit call method
-    // connection to DB
 
-    public void run() {
+    public void analyzeProject() {
         List<Class<?>> allClasses =
                 new Reflections(packageName, new SubTypesScanner(false))
                         .getAllTypes()
